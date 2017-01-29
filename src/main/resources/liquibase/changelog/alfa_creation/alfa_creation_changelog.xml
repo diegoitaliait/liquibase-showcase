@@ -1,0 +1,28 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+                            http://www.liquibase.org/xml/ns/dbchangelog
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <!--<changeSet id="201701282021" author="diego">-->
+    <!--<sqlFile path="01_drop_db.sql" relativeToChangelogFile="true" />-->
+    <!--</changeSet>-->
+    <changeSet id="201701282022" author="diego">
+        <sqlFile path="02_tables.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+    <changeSet id="201701282023" author="diego">
+        <sqlFile path="03_fk_and_idx.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+    <changeSet id="201701282024" author="diego">
+        <sqlFile path="04_data.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet author="diego" id="1.0">
+        <tagDatabase tag="1.0"/>
+    </changeSet>
+
+</databaseChangeLog>
+
