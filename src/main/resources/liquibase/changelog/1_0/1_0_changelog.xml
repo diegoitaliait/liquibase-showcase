@@ -19,8 +19,12 @@
         <sqlFile path="sql/02_fk_and_idx.sql" relativeToChangelogFile="true"/>
     </changeSet>
 
-    <changeSet id="201701282024_data" author="diego">
+    <changeSet id="201701282024_data_firt_trunk" author="diego">
         <sqlFile path="sql/03_data.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="201702251546_data_second_trunk" author="diego">
+        <sqlFile path="sql/04_data.sql" relativeToChangelogFile="true"/>
     </changeSet>
 
     <changeSet author="diego" id="1.0">
