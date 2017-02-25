@@ -1,0 +1,26 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+                            http://www.liquibase.org/xml/ns/dbchangelog
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="1_1_v_customer_invoce_track" author="diego">
+        <createView viewName="v_customer_invoce_track" replaceIfExists="true">
+            select c.CustomerId, i.InvoiceId, il.TrackId
+            from Customer c join Invoice i on (c.CustomerId = i.CustomerId)
+            join InvoiceLine il on (i.InvoiceId = il.InvoiceId)
+        </createView>
+        <rollback>
+            <dropView viewName="v_customer_invoce_track"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet author="diego" id="1.1">
+        <tagDatabase tag="1.1"/>
+    </changeSet>
+
+</databaseChangeLog>
+
