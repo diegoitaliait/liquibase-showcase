@@ -1,0 +1,64 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+                            http://www.liquibase.org/xml/ns/dbchangelog
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="20170211_v_customer_city_country" author="diego">
+        <createView viewName="v_customer_city_country" replaceIfExists="true">
+            select  cu.*,ci.id as id_city, ci.name as city_name, ci.state as city_state, co.name as country_name
+            from Customer cu join City ci on (cu.City like ci.name)
+            join Country co on (ci.country_id = co.id)
+        </createView>
+        <rollback>
+            <dropView viewName="v_customer_city_country"/>
+        </rollback>
+    </changeSet>
+
+
+    <changeSet id="20170209_add_city_id_to_customer" author="diego">
+        <addColumn
+                tableName="Customer">
+            <column name="city_id" type="int(11)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="201702111550_01_p_generate_city_id" author="diego">
+
+        <sql>
+            DROP PROCEDURE IF EXISTS `p_generate_city_id`;
+        </sql>
+
+        <createProcedure
+                relativeToChangelogFile="true"
+                path="01_p_generate_city_id.sql"
+                />
+    </changeSet>
+
+    <changeSet id="201702121706_launch_p_generate_city_id" author="diego">
+        <sql>
+            CALL `p_generate_city_id`()
+        </sql>
+    </changeSet>
+
+    <!-- regenerate view to allow a better view definition -->
+    <changeSet id="201702121706_v_customer_city_country_update" author="diego">
+        <createView viewName="v_customer_city_country" replaceIfExists="true">
+            select  cu.*,ci.id as id_city, ci.name as city_name, ci.state as city_state, co.name as country_name
+            from Customer cu join City ci on (cu.city_id like ci.id)
+            join Country co on (ci.country_id = co.id)
+        </createView>
+        <rollback>
+            <dropView viewName="v_customer_city_country"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet author="diego" id="1.3">
+        <tagDatabase tag="1.3"/>
+    </changeSet>
+
+</databaseChangeLog>
+
