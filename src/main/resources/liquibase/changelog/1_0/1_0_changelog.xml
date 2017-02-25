@@ -24,7 +24,7 @@
     </changeSet>
 
     <changeSet id="201702251546_data_second_trunk" author="diego">
-        <sqlFile path="sql/04_data.sql" relativeToChangelogFile="true"/>
+        <sqlFile path="sql/04_more_data.sql" relativeToChangelogFile="true"/>
     </changeSet>
 
     <changeSet author="diego" id="1.0">

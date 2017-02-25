@@ -1,0 +1,39 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+                            http://www.liquibase.org/xml/ns/dbchangelog
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <!--     City     -->
+
+    <changeSet id="201702201918_tbl_mysql" author="diego" dbms="mysql">
+        <createTable tableName="MyMysql">
+            <column name="id" type="int(10)">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="MyMysql" />
+        </rollback>
+    </changeSet>
+
+    <changeSet id="201702201918_tbl_h2" author="diego" dbms="h2">
+        <createTable tableName="MyH2">
+            <column name="id" type="int(10)">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="MyH2" />
+        </rollback>
+    </changeSet>
+
+    <changeSet author="diego" id="1.5">
+        <tagDatabase tag="1.5"/>
+    </changeSet>
+
+</databaseChangeLog>
+
