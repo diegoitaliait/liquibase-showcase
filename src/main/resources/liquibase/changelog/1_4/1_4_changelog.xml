@@ -1,0 +1,27 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+                            http://www.liquibase.org/xml/ns/dbchangelog
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <property name="invoice_vat_type" value="INTEGER" />
+
+    <!-- The vat variables are defined into the systemProperties in pom.xml-->
+    <changeSet id="201702121720_add_column_vat_to_invoice" author="diego" runAlways="true" >
+        <addColumn
+                tableName="${vat_table_name}">
+            <column name="${vat_column_name}"
+                    defaultValue="${vat_default_value}"
+                    type="${invoice_vat_type}"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="diego" id="1.4">
+        <tagDatabase tag="1.4"/>
+    </changeSet>
+
+</databaseChangeLog>
+
