@@ -19,6 +19,13 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.40</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.193</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.liquibase</groupId>
@@ -58,8 +65,12 @@
                 <artifactId>liquibase-maven-plugin</artifactId>
                 <version>3.5.3</version>
                 <configuration>
-                    <propertyFile>src/main/resources/liquibase/conf/${environment}-liquibase.properties</propertyFile>
-                    <changeLogFile>src/main/resources/liquibase/changelog/db-changelog-master.xml</changeLogFile>
+                    <systemProperties>
+                        <vat_table_name>${vat.table_name}</vat_table_name>
+                        <vat_column_name>${vat.column_name}</vat_column_name>
+                        <vat_default_value>${vat.default_value}</vat_default_value>
+                    </systemProperties>
+                    <propertyFile>src/main/resources/liquibase/conf/liquibase-${engine}.properties</propertyFile>
                     <dropFirst>${isDropFirstEnable}</dropFirst>
                     <logging>DEBUG</logging>
                 </configuration>
@@ -77,10 +88,25 @@
 
     <profiles>
         <profile>
-            <id>local</id>
+            <id>mysql</id>
             <properties>
-                <environment>local</environment>
-                <isDropFirstEnable>true</isDropFirstEnable>
+                <engine>mysql</engine>
+                <vat.table_name>Invoice</vat.table_name>
+                <vat.column_name>vat</vat.column_name>
+                <vat.default_value>22</vat.default_value>
+
+                <isDropFirstEnable>false</isDropFirstEnable>
+            </properties>
+        </profile>
+        <profile>
+            <id>h2</id>
+            <properties>
+                <engine>h2</engine>
+                <vat.table_name>Invoice</vat.table_name>
+                <vat.column_name>vat</vat.column_name>
+                <vat.default_value>22</vat.default_value>
+
+                <isDropFirstEnable>false</isDropFirstEnable>
             </properties>
         </profile>
     </profiles>

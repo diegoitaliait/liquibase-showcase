@@ -8,16 +8,19 @@
                             http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <!--<changeSet id="201701282021" author="diego">-->
-    <!--<sqlFile path="01_drop_db.sql" relativeToChangelogFile="true" />-->
+    <!--<sqlFile path="00_drop_db.sql" relativeToChangelogFile="true" />-->
     <!--</changeSet>-->
-    <changeSet id="201701282022" author="diego">
-        <sqlFile path="02_tables.sql" relativeToChangelogFile="true"/>
+
+    <changeSet id="201701282022_create_table" author="diego">
+        <sqlFile path="sql/01_tables.sql" relativeToChangelogFile="true"/>
     </changeSet>
-    <changeSet id="201701282023" author="diego">
-        <sqlFile path="03_fk_and_idx.sql" relativeToChangelogFile="true"/>
+
+    <changeSet id="201701282023_create_fk_and_idx" author="diego">
+        <sqlFile path="sql/02_fk_and_idx.sql" relativeToChangelogFile="true"/>
     </changeSet>
-    <changeSet id="201701282024" author="diego">
-        <sqlFile path="04_data.sql" relativeToChangelogFile="true"/>
+
+    <changeSet id="201701282024_data" author="diego">
+        <sqlFile path="sql/03_data.sql" relativeToChangelogFile="true"/>
     </changeSet>
 
     <changeSet author="diego" id="1.0">
