@@ -9,9 +9,9 @@
 
     <include file="1_0/1_0_changelog.xml" relativeToChangelogFile="true"/>
 
-    <!--<include file="1_1/1_1_changelog.xml" relativeToChangelogFile="true"/>-->
+    <!--<include fi1_1_1"1_1/1_1_changelog.xml" relativeToChangelogFile="true"/>-->
 
-    <!--<include file="1_2/1_2_changelog.xml" relativeToChangelogFile="true"/>-->
+    <!--<include fi1_2_1"1_2/1_2_changelog.xml" relativeToChangelogFile="true"/>-->
 
     <!--<include file="1_3/1_3_changelog.xml" relativeToChangelogFile="true"/>-->
 

@@ -7,7 +7,7 @@
                             http://www.liquibase.org/xml/ns/dbchangelog
                             http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
-    <changeSet id="1_1_v_customer_invoce_track" author="diego">
+    <changeSet id="1_1_v_customer_invoce_tracks" author="diego">
         <createView viewName="v_customer_invoce_track" replaceIfExists="true">
             select c.CustomerId, i.InvoiceId, il.TrackId
             from Customer c join Invoice i on (c.CustomerId = i.CustomerId)

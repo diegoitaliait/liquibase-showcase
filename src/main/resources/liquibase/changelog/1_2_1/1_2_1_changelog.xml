@@ -1,0 +1,48 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+                            http://www.liquibase.org/xml/ns/dbchangelog
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+
+
+    <changeSet id="201702062225_insert_data_Country" author="diego" >
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">SELECT COUNT(*) FROM Country</sqlCheck>
+        </preConditions>
+        <loadData
+                file="01_load_countries.csv"
+                tableName="Country"
+                relativeToChangelogFile="true">
+            <column name="id" type="NUMERIC" />
+            <column name="name" type="STRING"/>
+        </loadData>
+    </changeSet>
+
+
+
+    <changeSet id="20170206_insert_data_City" author="diego" >
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">SELECT COUNT(*) FROM City</sqlCheck>
+        </preConditions>
+        <loadData
+                file="02_load_cities.csv"
+                tableName="City"
+                relativeToChangelogFile="true"
+                separator=";">
+            <column name="id" type="NUMERIC" />
+            <column name="name" type="STRING"/>
+            <column name="state" type="STRING"/>
+            <column name="country_id" type="NUMERIC"/>
+        </loadData>
+    </changeSet>
+
+    <changeSet author="diego" id="1.2.1">
+        <tagDatabase tag="1.2.1"/>
+    </changeSet>
+
+</databaseChangeLog>
+
