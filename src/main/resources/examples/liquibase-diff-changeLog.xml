@@ -1,0 +1,51 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="diego (generated)" id="1490437063577-1">
+        <dropForeignKeyConstraint baseTableName="City" constraintName="fk_city_country"/>
+    </changeSet>
+    <changeSet author="diego (generated)" id="1490437063577-2">
+        <dropUniqueConstraint constraintName="unq_city_name" tableName="City"/>
+    </changeSet>
+    <changeSet author="diego (generated)" id="1490437063577-3">
+        <dropUniqueConstraint constraintName="unq_country_name" tableName="Country"/>
+    </changeSet>
+    <changeSet author="diego (generated)" id="1490437063577-4">
+        <dropView viewName="v_customer_invoce_track"/>
+    </changeSet>
+    <changeSet author="diego (generated)" id="1490437063577-5">
+        <dropTable tableName="City"/>
+    </changeSet>
+    <changeSet author="diego (generated)" id="1490437063577-6">
+        <dropTable tableName="Country"/>
+    </changeSet>
+    <changeSet author="diego (generated)" id="1490738324802-1">
+        <dropForeignKeyConstraint baseTableName="City" constraintName="fk_city_country"/>
+    </changeSet>
+    <changeSet author="diego (generated)" id="1490738324802-2">
+        <dropUniqueConstraint constraintName="unq_city_name" tableName="City"/>
+    </changeSet>
+    <changeSet author="diego (generated)" id="1490738324802-3">
+        <dropUniqueConstraint constraintName="unq_country_name" tableName="Country"/>
+    </changeSet>
+    <changeSet author="diego (generated)" id="1490738324802-4">
+        <dropView viewName="v_customer_city_country"/>
+    </changeSet>
+    <changeSet author="diego (generated)" id="1490738324802-5">
+        <dropView viewName="v_customer_invoce_track"/>
+    </changeSet>
+    <changeSet author="diego (generated)" id="1490738324802-6">
+        <dropTable tableName="City"/>
+    </changeSet>
+    <changeSet author="diego (generated)" id="1490738324802-7">
+        <dropTable tableName="Country"/>
+    </changeSet>
+    <changeSet author="diego (generated)" id="1490738324802-8">
+        <dropTable tableName="MyMysql"/>
+    </changeSet>
+    <changeSet author="diego (generated)" id="1490738324802-9">
+        <dropColumn columnName="city_id" tableName="Customer"/>
+    </changeSet>
+    <changeSet author="diego (generated)" id="1490738324802-10">
+        <dropColumn columnName="vat" tableName="Invoice"/>
+    </changeSet>
+</databaseChangeLog>
